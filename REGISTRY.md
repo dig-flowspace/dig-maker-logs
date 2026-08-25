@@ -36,3 +36,4 @@
 | `.env` / `.env.example` | Secrets (ignored) / their documented shape |
 | [`panel/`](panel/index.md) | The expert panel — nine personas, Layer 1 routing in `index.md` |
 | `.claude/commands/wrap.md` | `/wrap` — Kilgore's session-wrap ritual (R6), migrated from the Gregory/Shirley pattern |
+| [`EXPOSURE-POLICY.md`](EXPOSURE-POLICY.md) | **Publication boundary** — GREEN/RED/GRAY tiers + sweep mechanics; gates every /wrap commit |

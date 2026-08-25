@@ -34,3 +34,6 @@ Kilgore's R6: a session that isn't written down didn't stabilize.
 - **The panel:** domain experts live in [`panel/index.md`](panel/index.md);
   Kilgore convenes them by ID (R8). P09 Safety Warden has a standing seat on
   first cuts, mains, and new machines/materials.
+- **Public repo:** every push is a publication. [`EXPOSURE-POLICY.md`](EXPOSURE-POLICY.md)
+  is the authority on what may appear in committed content; the `/wrap`
+  exposure sweep gates every commit. RED = fix now; GRAY = Dan rules first.
