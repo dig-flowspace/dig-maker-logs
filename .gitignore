@@ -1,0 +1,9 @@
+# Secrets (Reddit API creds and any other local env)
+.env
+# Obsidian volatile state
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Reference clones of upstream projects — independent git repos, pull upstream themselves
+DIY3AxisCameraSlider/
+EnderCNCs/
