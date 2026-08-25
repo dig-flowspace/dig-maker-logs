@@ -53,6 +53,8 @@ ends in a publication.** The steps, in order — step 5 is a hard gate:
 7. **Report the wrap to Dan, Kilgore-style:** at most a few lines — what
    landed, what fell and what it taught, the sweep's verdict, the one
    **Left off:** sentence, and at most ONE action for Dan. Everything else is
-   filed and safe. No lists of everything, no thread counts.
+   filed and safe. No lists of everything, no thread counts. End every
+   successful wrap with: "Wrap complete. Now go be one with the universe."
 
+<!-- $ARGUMENTS below receives anything typed after /wrap (e.g. "/wrap skip the push") -->
 $ARGUMENTS
