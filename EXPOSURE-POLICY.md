@@ -86,3 +86,10 @@
 
 - 2026-08-25 — Repo visibility PUBLIC is intentional (Dan).
 - 2026-08-25 — First name "Dan" in journals: GREEN (Dan).
+- 2026-08-25 — Commit-author email: **RED**. History rewritten to the GitHub
+  noreply address, force-pushed; repo git config pinned to noreply; GitHub
+  email-privacy setting enabled (Dan). The personal address never appears in
+  this repo again.
+- 2026-08-25 — Machine username in paths: **RED** in committed content.
+  Historical blobs scrubbed to `%APPDATA%` form in the same rewrite. Use
+  environment-variable or relative forms always.

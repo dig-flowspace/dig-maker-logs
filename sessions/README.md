@@ -37,6 +37,7 @@ A few lines of narrative. Falls logged plainly (R5), with what they taught.
 
 Newest first.
 
+- [2026-08-25 (d) — History scrubbed: email and username out](2026/2026-08/2026-08-25_d_history-scrub.md)
 - [2026-08-25 (c) — Published, renamed, and the exposure gate goes in](2026/2026-08/2026-08-25_c_exposure-policy.md)
 - [2026-08-25 (b) — The panel convenes, /wrap migrates](2026/2026-08/2026-08-25_b_panel-and-wrap.md)
 - [2026-08-25 — Kilgore stands up: the workshop gets its framework](2026/2026-08/2026-08-25_kilgore-standup.md)
