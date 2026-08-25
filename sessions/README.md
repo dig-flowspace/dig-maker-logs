@@ -37,4 +37,5 @@ A few lines of narrative. Falls logged plainly (R5), with what they taught.
 
 Newest first.
 
+- [2026-08-25 (b) — The panel convenes, /wrap migrates](2026/2026-08/2026-08-25_b_panel-and-wrap.md)
 - [2026-08-25 — Kilgore stands up: the workshop gets its framework](2026/2026-08/2026-08-25_kilgore-standup.md)

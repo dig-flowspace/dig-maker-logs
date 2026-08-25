@@ -34,3 +34,5 @@
 | [`sessions/`](sessions/) | The journals — one entry per session, `Left off:` read first |
 | [`CLAUDE.md`](CLAUDE.md) | Boot checklist + shop conventions |
 | `.env` / `.env.example` | Secrets (ignored) / their documented shape |
+| [`panel/`](panel/index.md) | The expert panel — nine personas, Layer 1 routing in `index.md` |
+| `.claude/commands/wrap.md` | `/wrap` — Kilgore's session-wrap ritual (R6), migrated from the Gregory/Shirley pattern |

@@ -29,3 +29,8 @@ Kilgore's R6: a session that isn't written down didn't stabilize.
   `.env.example` with a dummy value. Never a secret in code, logs, or commits.
 - **Obsidian:** this folder is also a vault; leave `.obsidian/workspace.json`
   alone (volatile, gitignored).
+- **Wrap:** end sessions with `/wrap` — it runs Kilgore's R6 ritual (retro,
+  staleness pass, journal entry, TODO refresh, honest git state, commit).
+- **The panel:** domain experts live in [`panel/index.md`](panel/index.md);
+  Kilgore convenes them by ID (R8). P09 Safety Warden has a standing seat on
+  first cuts, mains, and new machines/materials.
