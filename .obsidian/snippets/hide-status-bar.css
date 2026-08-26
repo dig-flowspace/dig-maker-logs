@@ -1,0 +1,4 @@
+/* Hide the status bar (backlinks / word count / etc., bottom right) */
+.status-bar {
+  display: none;
+}

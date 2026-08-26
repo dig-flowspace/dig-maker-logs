@@ -18,19 +18,19 @@ ends in a publication.** The steps, in order — step 5 is a hard gate:
    true on disk when the session ends. New things that exist but aren't on the
    pegboard get registered now (or Inboxed).
 
-3. **Write the journal entry** per [sessions/README.md](../../sessions/README.md):
-   file at `sessions/YYYY/YYYY-MM/YYYY-MM-DD_slug.md` (`_b`, `_c` for later
+3. **Write the journal entry** per [sessions/README.md](../../sausage-roll/sessions/README.md):
+   file at `sausage-roll/sessions/YYYY/YYYY-MM/YYYY-MM-DD_slug.md` (`_b`, `_c` for later
    sessions the same day), and add its line (newest first) to the README's
    Entries list. The **Left off:** line is written for Dan to read FIRST next
    session. **The journal publishes too** — write it knowing strangers read it.
 
-4. **Refresh [TODO.md](../../TODO.md).** Exactly one ▶ Active now survives.
+4. **Refresh [TODO.md](../../be-productive-already/TODO.md).** Exactly one ▶ Active now survives.
    Finished items leave; ideas that surfaced mid-session land in the 📥 Inbox;
    promoting or shelving beyond that is Dan's call, made in the wrap report,
    not assumed.
 
 5. **THE EXPOSURE SWEEP — gates everything after it.** Run the sweep exactly
-   as specified in [EXPOSURE-POLICY.md](../../EXPOSURE-POLICY.md) § Sweep
+   as specified in [EXPOSURE-POLICY.md](../../sausage-roll/EXPOSURE-POLICY.md) § Sweep
    mechanics: read the session's diff with human eyes, then run the policy's
    greps as the net underneath. Scope widens to the full tracked tree after
    any bulk import, rename, or pasted-in content. Disposition per policy:

@@ -1,4 +1,6 @@
 {
   "cssTheme": "Baseline",
-  "theme": "obsidian"
+  "theme": "obsidian",
+  "showRibbon": true,
+  "baseFontSize": 14
 }

@@ -3,7 +3,13 @@
 # Obsidian volatile state
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
+# agent-client plugin: data.json carries local machine paths (RED: username),
+# sessions/ holds full conversation transcripts
+.obsidian/plugins/agent-client/data.json
+.obsidian/plugins/agent-client/sessions/
 
-# Reference clones of upstream projects — independent git repos, pull upstream themselves
-DIY3AxisCameraSlider/
-EnderCNCs/
+# Collaboration clones of upstream projects — independent git repos, pull upstream themselves
+colab-repos/
+
+# Python droppings
+__pycache__/

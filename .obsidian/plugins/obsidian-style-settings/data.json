@@ -15,7 +15,7 @@
   "baseline-style@@element-style": "input-adwaita",
   "baseline-style@@layout-style": "layout-baseline",
   "baseline-style@@status-bar-style": "status-bar-default",
-  "baseline-style@@font-ui-modifier": 2,
+  "baseline-style@@font-ui-modifier": 0,
   "baseline-style@@tab-top-left-style": "tab-top-left-labeled",
   "baseline-style@@plugins-grid-off": true,
   "baseline-style@@active-line-style": "active-line-background",
@@ -23,11 +23,9 @@
   "baseline-style@@indentation-guide-width": 1,
   "baseline-style@@metadata-style": "metadata-cupertino",
   "baseline-style@@metadata-heading-off": true,
-  "baseline-style@@metadata-add-property-off": true,
   "baseline-style@@link-external-decoration": "underline",
   "baseline-style@@img-grid": true,
   "baseline-style@@zoom-off": true,
-  "baseline-style@@full-width-media-off": true,
   "baseline-style@@row-hover": true,
   "baseline-style@@row-alt": true,
   "baseline-style@@icon-color@@dark": "#B5B5B5",
@@ -75,5 +73,6 @@
   "baseline-style@@col-alt": false,
   "baseline-style@@row-lines": true,
   "baseline-style@@col-lines": true,
-  "baseline-style@@table-numbers": false
+  "baseline-style@@table-numbers": false,
+  "baseline-style@@dynamic-type-off": false
 }

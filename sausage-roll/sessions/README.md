@@ -5,7 +5,7 @@ swaps, and context compactions. Kilgore writes the entry at session end (R6),
 or Dan asks for one mid-stream. Same lineage as digit-dance / magnus-archive.
 
 > **History, not status.** "Where we are right now" lives in
-> [`../TODO.md`](../TODO.md) — this log never becomes a second, drifting
+> [`TODO.md`](../../be-productive-already/TODO.md) — this log never becomes a second, drifting
 > status surface. Keep entries skimmable: fast re-entry, not a transcript.
 
 ## Filing
@@ -37,6 +37,7 @@ A few lines of narrative. Falls logged plainly (R5), with what they taught.
 
 Newest first.
 
+- [2026-08-25 (e) — The great rearrangement](2026/2026-08/2026-08-25_e_great-rearrangement.md)
 - [2026-08-25 (d) — History scrubbed: email and username out](2026/2026-08/2026-08-25_d_history-scrub.md)
 - [2026-08-25 (c) — Published, renamed, and the exposure gate goes in](2026/2026-08/2026-08-25_c_exposure-policy.md)
 - [2026-08-25 (b) — The panel convenes, /wrap migrates](2026/2026-08/2026-08-25_b_panel-and-wrap.md)

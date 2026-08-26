@@ -1,0 +1,6 @@
+{
+    // colab-repos/ holds independent git repos (gitignored by this one).
+    // Depth 2 lets VS Code find them so they show in Source Control.
+    "git.repositoryScanMaxDepth": 2,
+    "git.autoRepositoryDetection": true
+}
