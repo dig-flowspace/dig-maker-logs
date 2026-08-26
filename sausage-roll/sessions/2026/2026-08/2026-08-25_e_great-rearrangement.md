@@ -48,6 +48,15 @@ emails beyond third-party plugin authors' own published attributions, no
 user paths, no token-shaped strings outside the documented dummy in
 `.env.example`.
 
+Addendum, from the wrap itself: two more falls. (4) GitHub push protection
+rejected the push — the `.env.example` Discord-token dummy was shaped so
+faithfully it matched the secret scanner. The convention amends itself:
+document the shape in the comment, keep the value scanner-inert
+(`paste-bot-token-here`). (5) A permission-blocked compound command silently
+took its first half (a `git add`) down with it, so the fix commit briefly
+didn't contain the fix — caught by the very next push rejection. One command,
+one purpose, from now on. Landed as commit `99609f3`.
+
 ## Files created or changed
 
 - Whole-tree rename: governance → `sausage-roll/`, TODO →
