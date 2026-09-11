@@ -87,6 +87,8 @@ importer. Excalidraw's `data.json` carries `apiKey`/`taskboneAPIkey` fields,
 all empty strings; no local paths, no emails, no transcripts. Tracked as code,
 consistent with the existing editing-toolbar plugin.
 
+Landed as commit `c3e77e4`.
+
 **Exposure sweep: clean.** Scope: session diff plus untracked arrivals, with
 the policy greps run over the full tracked tree as the net. No RED. No GRAY
 held. The only secret-shaped hits were `.env.example`'s documented dummy
