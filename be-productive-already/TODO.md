@@ -6,13 +6,15 @@
 
 ## ▶ Active now
 
-- ▶ Decide the first real job: pick up the Ender 3 CNC build, the camera
-  slider, or the Reddit tooling — and tell Kilgore, so it lands here properly.
+- ▶ **3-axis camera slider** — build against the
+  `colab-repos/DIY3AxisCameraSlider/` reference, with the dead Ronin-S head as
+  the motor-and-frame donor (three gimbal BLDC motors with hall sensors, rigid
+  3-axis frame). First decision, before anything is cut: test a known-genuine
+  BG37 grip, or commit to the donor path? Cutting is the irreversible step.
 
 ## On the shelf
 
 - Ender 3 CNC conversion — build against the `colab-repos/EnderCNCs/` reference.
-- Camera slider — build against the `colab-repos/DIY3AxisCameraSlider/` reference.
 - Reddit tooling — fill `.env` from `.env.example` when it starts.
 
 ## 📥 Inbox
