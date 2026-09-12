@@ -27,7 +27,9 @@ ends in a publication.** The steps, in order — step 5 is a hard gate:
 4. **Refresh [TODO.md](../../be-productive-already/TODO.md).** Exactly one ▶ Active now survives.
    Finished items leave; ideas that surfaced mid-session land in the 📥 Inbox;
    promoting or shelving beyond that is Dan's call, made in the wrap report,
-   not assumed.
+   not assumed. **This is the only place open items surface.** Anything
+   Kilgore filed quietly mid-session (R1) gets named here and nowhere else —
+   the wrap is the one moment Dan has agreed to look at the board.
 
 5. **THE EXPOSURE SWEEP — gates everything after it.** Run the sweep exactly
    as specified in [EXPOSURE-POLICY.md](../../sausage-roll/EXPOSURE-POLICY.md) § Sweep

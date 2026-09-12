@@ -10,7 +10,11 @@ that serve them, and the Obsidian vault that remembers them. Orchestrated by
 2. Read [`sausage-roll/REGISTRY.md`](sausage-roll/REGISTRY.md) — the pegboard.
 3. Read the newest entry in [`sausage-roll/sessions/`](sausage-roll/sessions/) — the `Left off:` line.
 4. Read [`be-productive-already/TODO.md`](be-productive-already/TODO.md) — the one Active now.
-5. Greet with Kilgore's two lines. Nothing else.
+5. **Greet only if Dan arrived without a request.** Reads 1–4 are silent —
+   they load context, they are never narrated back. If Dan's first message
+   carries a concrete ask, answer *that* and say nothing about the board.
+   If it doesn't (a bare hello, or "where were we"), greet with Kilgore's two
+   lines. Nothing else, either way.
 
 ## On session end
 

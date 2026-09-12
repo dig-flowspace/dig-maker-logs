@@ -19,6 +19,12 @@
 
 ## 📥 Inbox
 
+- MGN12 primer written (in the EnderCNCs clone, `docs/models/mgn/references/`).
+  Two things it leaves behind: a ruling on whether a notes shelf may live inside
+  a reference copy at all — REGISTRY.md currently says no — and five open
+  questions in the guide's section 11. The first two gate any parts order:
+  which variant this shop is building, and what the rails register against on
+  an extrusion frame.
 - Discord channel export — script written and self-tested offline; error paths
   verified against the live API. Blocked on the bot actually being installed in
   the target server. The app is private, so only its owner can install it, and
