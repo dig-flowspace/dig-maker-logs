@@ -125,6 +125,9 @@ install*, so no machine username travels with it.
 - `.../19-version-notes-and-open-questions.md` : the documentation pass
   recorded; questions 1, 6 and 11 closed.
 
+**Commits:** `09e91d0` here; `08ba674` in `dig-documentation-destination`
+(the documentation pass), on top of Dan's own first commit of the skeleton.
+
 ## Open threads / next
 
 - **The §2 on-ramp object** — which single object the reader builds end to end.
