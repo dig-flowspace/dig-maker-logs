@@ -13,3 +13,6 @@ colab-repos/
 
 # Python droppings
 __pycache__/
+
+# Dan's public documentation repo — independent git repo, lives here for convenience
+dig-documentation-destination/

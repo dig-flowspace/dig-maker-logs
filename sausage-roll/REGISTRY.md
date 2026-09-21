@@ -14,6 +14,7 @@
 | [`be-productive-already/`](../be-productive-already/) | [`TODO.md`](../be-productive-already/TODO.md) — Active now + shelf + Inbox |
 | [`soft-tools/`](../soft-tools/) | Scripts and software tooling (Claude-hands) |
 | `colab-repos/` | Reference clones of other people's projects — independent git repos, ignored by this one |
+| `dig-documentation-destination/` | Dan's public documentation library — requirements docs, philosophies, guides. His own repo, independent and gitignored here; cloned into the tree for workspace convenience |
 
 ## Workstreams
 
@@ -23,6 +24,7 @@
 | 2 | **3-axis camera slider** — ESP32 + PS3-controller motion rig | CAD & Fab / Firmware | `colab-repos/DIY3AxisCameraSlider/` — reference copy (schematic, STLs, `main.cpp`) |
 | 3 | **Reddit tooling** — planned; creds slot exists, no code yet | Scripts | `.env` (gitignored) / `.env.example` |
 | 4 | **Discord channel export** — read-only history archiver, built to be handed to a server admin for review | Scripts | [`soft-tools/scripts/discord_export.py`](../soft-tools/scripts/discord_export.py), [`soft-tools/scripts/README-discord-export.md`](../soft-tools/scripts/README-discord-export.md) |
+| 5 | **Plasticity concepts guide** — an illustrated explanation of how Plasticity thinks, for the documentation library | The Library | `dig-documentation-destination/guides/software/cad/plasticity/` — 20 sections, 2 reference files (command inventory, shortcut map), drawn SVG figure register |
 
 > Workstreams 1–2 are **reference copies of other people's projects** — manuals
 > for Dan's own builds. Dan's build notes, deviations, and progress live in the
