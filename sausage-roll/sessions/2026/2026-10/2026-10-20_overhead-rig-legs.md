@@ -132,6 +132,8 @@ gitignored and never staged.
   framework rulings.
 - `sausage-roll/sessions/README.md` : this entry's index line.
 
+**Commit:** `41f2420`.
+
 ## Open threads / next
 
 - **Measure, then find the floor.** Measure the conduit actually bought, and
