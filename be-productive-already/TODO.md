@@ -41,3 +41,21 @@
   verified against the live API. Blocked on the bot actually being installed in
   the target server. The app is private, so only its owner can install it, and
   only into a server where they hold Manage Server.
+- Tabletop overhead rig — flummer's MakerWorld model 1556093 (CC BY-SA), built
+  without the carbon tubes. Panel convened 2026-10-20 with a provisional
+  Entomologist seat (not on the roster). Verdict: flummer's parts, regenerated
+  from his `.scad` at `Tube_Diameter` 23.4 (feet at 18); telescoping legs
+  adjusted at the foot (3/4" EMT upper 4 × 360 mm over 1/2" EMT lower
+  4 × 380 mm, bars 2 × 660), hub top 412–668 mm; new parts are a sleeve, a
+  collar and a TPU top bushing per leg, locked by a cone-tipped finger screw —
+  about $25 of conduit instead of $120+ of carbon. Source, STLs, drill jig and
+  build doc in `hard-tools/overhead-rig-legs/` (workstream 6); designed and
+  rendered, nothing printed or cut. Gate before any cut: the lowest useful
+  lens height, which sets the upper-tube length.
+- Two framework rulings, surfaced 2026-10-20. (1) The panel has needed a
+  provisional seat twice — the Surface Modeler (2026-09-21) and the
+  Entomologist (2026-10-20): make them permanent, or write a guest-seat rule
+  into `panel/index.md`? (2) KILGORE.md's hands table makes CAD & Fab
+  advise-only, but Dan asked for CAD source and STLs this session: amend it so
+  Claude may draft CAD files on request, with printing, cutting and anything
+  physical staying Dan's?

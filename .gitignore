@@ -16,3 +16,7 @@ __pycache__/
 
 # Dan's public documentation repo — independent git repo, lives here for convenience
 dig-documentation-destination/
+
+# flummer's rig parts, regenerated at our tube sizes: his files stay local, not republished here.
+# Regenerate from his OverheadShootingRig.scad (hard-tools/overhead-rig-legs/README.md shows how).
+hard-tools/overhead-rig-legs/stl/from-flummer/
