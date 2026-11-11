@@ -20,6 +20,13 @@
   (digit-dance, hyperliminal_flow), software, vendors.
 - **The Claude co-author trailer** on commits.
 - **Environment-variable *names* and dummy values** (`.env.example`).
+- **Factory-default, loopback and documentation addresses** (ruled
+  2026-11-11): the fixed address a product gives itself out of the box, the
+  same on every unit and printed in its maker's docs, such as the BUSY Bar's
+  over USB; this machine's loopback address; and the ranges reserved for
+  examples. An address on Dan's own network is still GRAY.
+- **Drive-letter paths with no username in them** (ruled 2026-11-11), such as
+  a folder on a data drive. A path through a user profile folder is still RED.
 
 ## 🔴 RED — never, no exceptions, blocks the commit
 
@@ -45,7 +52,7 @@
   noreply address; using it is Dan's call).
 - **Absolute local paths** — they carry the machine username. Prefer
   `%APPDATA%`-style or relative forms; a raw `C:\Users\<name>\...` waits
-  for Dan.
+  for Dan. (A drive-letter path with no username in it is GREEN, above.)
 - **Photos beyond the bench:** faces, house interior or exterior,
   identifiable background.
 - **Coarse location** (city/region), employer, schedule or absence
@@ -53,7 +60,8 @@
 - **Unpublished ideas with commercial intent**, and anything quoting
   another person's words at length.
 - **Links to private or internal services** (dashboards, local IPs,
-  hostnames).
+  hostnames). (Factory-default, loopback and documentation addresses are
+  GREEN, above.)
 
 ---
 
@@ -93,3 +101,8 @@
 - 2026-08-25 — Machine username in paths: **RED** in committed content.
   Historical blobs scrubbed to `%APPDATA%` form in the same rewrite. Use
   environment-variable or relative forms always.
+- 2026-11-11 — Factory-default device addresses (the BUSY Bar's over USB),
+  loopback and documentation-range addresses: **GREEN**. Addresses on Dan's
+  own network stay GRAY (Dan).
+- 2026-11-11 — Drive-letter paths with no username in them: **GREEN**. Paths
+  through a user profile folder stay RED (Dan).

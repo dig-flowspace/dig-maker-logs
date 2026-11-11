@@ -37,6 +37,7 @@ A few lines of narrative. Falls logged plainly (R5), with what they taught.
 
 Newest first.
 
+- [2026-11-11 — A BUSY Bar arrives, and gets a show of its own](2026/2026-11/2026-11-11_busy-bar-attract-mode.md)
 - [2026-10-20 — An entomologist on the panel, and legs that telescope](2026/2026-10/2026-10-20_overhead-rig-legs.md)
 - [2026-09-21 — A guide to a program nobody explained](2026/2026-09/2026-09-21_plasticity-guide.md)
 - [2026-09-12 — An MGN12 primer, and Kilgore learns to shut up](2026/2026-09/2026-09-12_mgn12-primer.md)

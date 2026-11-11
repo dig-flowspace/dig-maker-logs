@@ -1,0 +1,10 @@
+{
+    "format_version": 1,
+    "id": "shop.attract-mode",
+    "name": "Attract Mode",
+    "version": "0.1.0",
+    "api_version": "27.14.0",
+    "description": "A show for the front screen: clock, date, a message and a pinball scene, in turn.",
+    "author": "dig-flowspace",
+    "heap_size_kib": 256
+}

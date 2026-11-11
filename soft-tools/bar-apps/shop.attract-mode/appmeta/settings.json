@@ -1,0 +1,57 @@
+{
+    "format_version": 1,
+    "version": 1,
+    "fields": {
+        "seconds": {
+            "label": "Seconds",
+            "description": "How long each scene stays up.",
+            "type": "integer",
+            "default": 10,
+            "min": 5,
+            "max": 60,
+            "step": 5
+        },
+        "show_clock": {
+            "label": "Clock",
+            "type": "boolean",
+            "default": true
+        },
+        "show_date": {
+            "label": "Date",
+            "type": "boolean",
+            "default": true
+        },
+        "show_message": {
+            "label": "Message",
+            "type": "boolean",
+            "default": true
+        },
+        "message": {
+            "label": "Text",
+            "description": "What the Message scene says. Change it from the bar's web page.",
+            "type": "string",
+            "default": "Hello from the workshop",
+            "max_length": 64
+        },
+        "show_pinball": {
+            "label": "Pinball",
+            "type": "boolean",
+            "default": true
+        },
+        "time_format": {
+            "label": "Time format",
+            "type": "enum",
+            "default": "24h",
+            "options": [
+                {
+                    "value": "24h",
+                    "label": "24-hour"
+                },
+                {
+                    "value": "12h",
+                    "label": "12-hour"
+                }
+            ]
+        }
+    }
+}
