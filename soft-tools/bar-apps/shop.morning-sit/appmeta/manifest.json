@@ -1,0 +1,10 @@
+{
+    "format_version": 1,
+    "id": "shop.morning-sit",
+    "name": "Morning Sit",
+    "version": "0.1.1",
+    "api_version": "27.14.0",
+    "description": "An interval timer for breath-counting practice: rounds of counting with breaks between, marked by a bell.",
+    "author": "dig-flowspace",
+    "heap_size_kib": 256
+}

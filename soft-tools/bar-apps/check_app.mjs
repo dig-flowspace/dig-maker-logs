@@ -3,6 +3,9 @@
 //   node soft-tools/bar-apps/check_app.mjs soft-tools/bar-apps/shop.attract-mode
 //   node soft-tools/bar-apps/check_app.mjs <app folder> --seconds 300 --set time_format=12h --set "message=Back at 3"
 //   node soft-tools/bar-apps/check_app.mjs <app folder> --trace        (print every request)
+//   node soft-tools/bar-apps/check_app.mjs <app folder> --press 60:start --press 90:ok
+//                 (press a control that many seconds in: start, ok or back, or
+//                  turn the wheel with encoder:clockwise or encoder:counterclockwise)
 //
 // It runs the app's scripts against a stand-in for the bar:
 //   - a fake clock, so minutes pass in a blink. It starts at 23:59:20 on New
@@ -10,13 +13,16 @@
 //   - a fake API that checks every request against the bar's rules, the ones
 //     in its spec and the ones this shop found by measuring;
 //   - a few turns of the wheel, then a short BACK, after which the app should
-//     clear the screen and end.
+//     clear the screen and end. An app that ends by itself first is checked
+//     the same way, at the moment it ends;
+//   - sounds: a file the app plays has to be in its folder, and the report
+//     says when one sound would have cut off another.
 //
 // It cannot prove the app works on the real thing: the bar runs a different
 // JavaScript engine. It catches the slips that would otherwise cost an
 // install to find. Needs Node 22 or newer; nothing to install.
 
-import { cpSync, existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, mkdtempSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { basename, join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
@@ -26,18 +32,26 @@ import { pathToFileURL } from "node:url";
 const args = process.argv.slice(2);
 const folder = args[0] && !args[0].startsWith("--") ? resolve(args[0]) : null;
 if (!folder || !existsSync(folder)) {
-    console.error("usage: node check_app.mjs <app folder> [--seconds N] [--set key=value] [--trace]");
+    console.error("usage: node check_app.mjs <app folder> [--seconds N] [--set key=value] [--press N:key[:action]] [--trace]");
     process.exit(2);
 }
 let seconds = 150;
 let trace = false;
 const overrides = {};
+const scripted = []; // extra presses: { at, key, action }
 for (let i = 1; i < args.length; i++) {
     if (args[i] === "--seconds") seconds = Number(args[++i]);
     else if (args[i] === "--trace") trace = true;
     else if (args[i] === "--set") {
         const [key, ...rest] = args[++i].split("=");
         overrides[key] = rest.join("=");
+    } else if (args[i] === "--press") {
+        const [when, key, action] = args[++i].split(":");
+        if (!(Number(when) >= 0) || !["start", "ok", "back", "encoder"].includes(key)) {
+            console.error(`--press ${args[i]}: give the seconds, then start, ok, back or encoder, as in 60:start`);
+            process.exit(2);
+        }
+        scripted.push({ at: Number(when) * 1000, key, action: action || (key === "encoder" ? "clockwise" : "short") });
     }
 }
 
@@ -154,9 +168,17 @@ const OPEN = [
 ];
 
 const canvas = new Map(); // id -> { type, display }
-const stats = { draws: 0, removals: 0, clears: 0, elements: 0, largest: 0, perSecond: new Map(), ids: new Set(), loading: 0 };
+const stats = { draws: 0, removals: 0, clears: 0, elements: 0, largest: 0, perSecond: new Map(), ids: new Set(), loading: 0, sounds: new Map(), cutOff: 0 };
+// The sounds every bar carries, and how long each lasts, in ms (firmware 1.3.1).
+const STOCK_SOUNDS = {
+    "shared/sounds/calendar_event_starts.snd": 1500,
+    "shared/sounds/calendar_reminder_ends.snd": 1500,
+    "shared/sounds/volume_change.snd": 500,
+};
+let soundEnds = 0; // on the fake clock: when the sound now playing runs out
 let everDrewFront = false;
 let lastCall = "";
+let emptiedBy = ""; // the call that last left the front screen empty
 
 const whole = (v) => Number.isInteger(v);
 
@@ -296,11 +318,54 @@ function handle(url, options) {
         if (trace) console.log(`${at()}  ${ids ? "remove  " + ids.join(" ") : "clear"}`);
         if (everDrewFront && frontCount() === 0 && running) {
             stats.loading++;
+            emptiedBy = lastCall;
             if (trace) console.log(`${at()}  (front screen empty: the bar would show "Loading")`);
         }
         return answer(200, { result: "OK" });
     }
 
+    if (path === "audio/play" && method === "POST") {
+        if (!body || body.application_name !== manifest.id) problem(`play: application_name should be the app's id, got ${JSON.stringify(body && body.application_name)}`);
+        const own = body && body.path;
+        const stock = body && body.stock_path;
+        if ((own === undefined) === (stock === undefined)) {
+            problem("play: needs a path or a stock_path, and not both");
+            return answer(400, { error: "Bad Request" });
+        }
+        let lasts = 0;
+        if (own !== undefined) {
+            if (typeof own !== "string" || !/^[a-zA-Z0-9._/-]+$/.test(own)) {
+                problem(`play: the path has characters the bar does not take: ${JSON.stringify(own)}`);
+                return answer(400, { error: "Bad Request" });
+            }
+            if (!existsSync(join(folder, own))) {
+                problem(`play: ${own} is not in the app's folder, so it would not ship with the app`);
+                return answer(404, { error: "Not Found" });
+            }
+            // The bar plays raw samples and nothing else: 16 bits each, 44,100 a second, one channel.
+            const bytes = statSync(join(folder, own)).size;
+            if (!own.endsWith(".snd")) problem(`play: ${own}: the bar plays .snd files only`);
+            if (bytes % 2 !== 0) problem(`play: ${own} has an odd number of bytes; a .snd file is 16-bit samples`);
+            lasts = (bytes / 2 / 44100) * 1000;
+        } else {
+            lasts = STOCK_SOUNDS[stock] || 0;
+        }
+        if (now < soundEnds) stats.cutOff++;
+        soundEnds = now + lasts;
+        const name = own !== undefined ? own : stock;
+        stats.sounds.set(name, (stats.sounds.get(name) || 0) + 1);
+        if (trace) console.log(`${at()}  play    ${name}`);
+        return answer(200, { result: "OK" });
+    }
+
+    if (path === "audio/play" && method === "DELETE") {
+        const playing = now < soundEnds;
+        soundEnds = 0;
+        if (trace) console.log(`${at()}  hush`);
+        return playing ? answer(200, { result: "OK" }) : answer(410, { error: "No audio is playing" });
+    }
+
+    if (trace) console.log(`${at()}  ${lastCall}`);
     return answer(200, {});
 }
 
@@ -315,9 +380,11 @@ globalThis.fetch = (url, options = {}) =>
     });
 
 const listeners = new Set();
+let everListened = false;
 globalThis.listen = (kind, handler) => {
     if (kind !== "input") problem(`listen("${kind}"): only "input" is known`);
     listeners.add(handler);
+    everListened = true;
     return () => listeners.delete(handler);
 };
 
@@ -346,10 +413,14 @@ later(span * 0.5, () => {
     press({ key: "encoder", action: "counterclockwise", delta: -1 });
     press({ key: "encoder", action: "counterclockwise", delta: -1 });
 });
+for (const { at: when, key, action } of scripted) {
+    later(when, () => press(key === "encoder" ? { key, action, delta: action === "clockwise" ? 1 : -1 } : { key, action }));
+}
 later(span, () => {
     running = false;
     press({ key: "back", action: "short" });
 });
+let endedAt = null; // on the fake clock: when the app ended by itself, if it did
 
 let crashed = null;
 try {
@@ -366,6 +437,14 @@ while (!crashed) {
     await settle();
     if (timers.size === 0) break;
     if (!running && !appBusy()) break;
+    if (running && everListened && listeners.size === 0 && !appBusy()) {
+        // Nothing listening and nothing waiting: on the bar, the app has ended.
+        endedAt = now;
+        running = false;
+        // Its last act was to clear the screen, as it should. That is not a "Loading" mid-show.
+        if (stats.loading > 0 && emptiedBy === lastCall && lastCall.startsWith("DELETE display/draw?application_name")) stats.loading--;
+        break;
+    }
     const [id, timer] = [...timers.entries()].reduce((a, b) => (b[1].at < a[1].at ? b : a));
     if (timer.at > giveUp) break;
     now = Math.max(now, timer.at);
@@ -386,15 +465,19 @@ console.log(`  settings: ${JSON.stringify(values)}`);
 console.log(`  ${stats.draws} draws carrying ${stats.elements} elements; largest ${stats.largest}; busiest second ${busiest} draws`);
 console.log(`  ${stats.removals} removals, ${stats.clears} full clears`);
 console.log(`  ${stats.ids.size} element ids: ${[...stats.ids].sort().join(" ")}`);
+if (stats.sounds.size > 0) console.log(`  sounds played: ${[...stats.sounds].map(([name, n]) => `${name} x${n}`).join(", ")}`);
+if (stats.cutOff > 0) console.log(`  a sound was cut off by the next one ${stats.cutOff} time(s): the bar has no queue`);
+if (endedAt !== null) console.log(`  the app ended by itself, ${((endedAt - startedAt) / 1000).toFixed(0)} s in`);
 if (stats.loading > 0) console.log(`  the front screen was left empty ${stats.loading} time(s) mid-show: the bar shows "Loading" then`);
 for (const line of errors) console.log(`  the app logged an error: ${line}`);
 
 if (crashed) problem(`the app threw: ${crashed && crashed.stack ? crashed.stack.split("\n").slice(0, 3).join(" | ") : crashed}`);
 if (running) problem("the checker stopped before BACK was pressed: the app went idle by itself");
 else {
-    if (listeners.size > 0) problem("after BACK the app is still listening for input, so on the bar it would not end");
-    if (appBusy()) problem("after BACK the app still has timers running, so on the bar it would not end");
-    if (!lastCall.startsWith("DELETE display/draw?application_name")) problem(`after BACK the last call should clear the screen; it was "${lastCall}"`);
+    const after = endedAt !== null ? "when it ended" : "after BACK";
+    if (listeners.size > 0) problem(`${after} the app is still listening for input, so on the bar it would not end`);
+    if (appBusy()) problem(`${after} the app still has timers running, so on the bar it would not end`);
+    if (!lastCall.startsWith("DELETE display/draw?application_name")) problem(`${after} the last call should clear the screen; it was "${lastCall}"`);
 }
 
 if (problems.size === 0) {
